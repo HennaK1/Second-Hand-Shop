@@ -1,74 +1,49 @@
-.Frame {
-	width: 100%;
-	height: 100%;
-	background-color: white;
-	display: inline-flex;
-	flex-direction: row;
-	align-items: flex-end;
-	justify-content: center;
-}
 
-.Rectangle1 {
-	width: 675px;
-	height: 941px;
-	padding: 114px 184px 257px 187px;
-	background-color: rgba(196, 196, 196, 1);
-	display: inline-flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: flex-end;
-}
+	body {
+		font-family: 'Roboto', sans-serif;
+	}
+	/* pitäs saaha nää keskelle*/
+	.Rectangle1 {
+		width: 100%;
+		height: 100%;
+		display: grid;
+		justify-content: center;
+		gap: 5%;
+		vertical-align: center;
+	}
+	/* pitäs saaha nää keskelle*/
+	.Ellipse1 {
+		justify-content: center;
+		width: 148px;
+		height: 148px;
+		background-color: rgba(255, 103.06, 103.06, 1);
+		border-radius: 9999px;
 
-.Ellipse1 {
-	width: 148px;
-	height: 148px;
-	background-color: rgba(255, 103.06, 103.06, 1);
-	border-radius: 9999px;
-}
+	}
 
-.logo {
-	font-size: 18px;
-	line-height: 100%;
-	color: black;
-}
+	.text {
+		font-size: 18px;
+		line-height: 100%;
+		color: black;
+	}
 
-.Rectangle2 {
-	width: 304px;
-	height: 56px;
-	background-color: rgba(255, 103.06, 103.06, 1);
-}
+	.Rectangle2 {
+		width: 304px;
+		height: 56px;
+		background-color: rgba(255, 103.06, 103.06, 1);
 
-.username {
-	font-size: 12px;
-	line-height: 100%;
-	color: black;
-}
+	}
 
-.Rectangle3 {
-	width: 304px;
-	height: 56px;
-	background-color: rgba(255, 103.06, 103.06, 1);
-}
+	.Rectangle3 {
+		width: 304px;
+		height: 56px;
+		background-color: rgba(255, 103.06, 103.06, 1);
+	}
 
-.password {
-	font-size: 12px;
-	line-height: 100%;
-	color: black;
-}
-
-.Rectangle4 {
-	width: 304px;
-	height: 56px;
-	background-color: rgba(255, 103.06, 103.06, 1);
-}
-
-.register {
-	font-size: 12px;
-	line-height: 100%;
-	color: black;
-
-
-
-
+	.Rectangle4 {
+		width: 304px;
+		height: 56px;
+		background-color: rgba(255, 103.06, 103.06, 1);
+	}
 
 
