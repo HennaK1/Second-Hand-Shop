@@ -1,7 +1,28 @@
 body {
     font-family: 'Lobster', cursive;
     background: gray;
+    margin: 0;
 }
+.container {
+    text-align:center;
+    display:inline-block;
+    position:relative;
+    width:100%;
+}
+
+.header {
+    padding: 10px;
+    background: #d6ddff;
+    color: black;
+    font-size: 30px;
+    overflow: hidden;
+    position: sticky;
+    position: -webkit-sticky;
+    display: flex;
+    text-align: center;
+    width: 100%;
+}
+
 .flex-container{
     display: flex;
     flex-direction: column;
@@ -107,4 +128,12 @@ input:focus {
     line-height: 100%;
     color: black;
 }
+
+.logo {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-content: flex-start;
+}
+
 
