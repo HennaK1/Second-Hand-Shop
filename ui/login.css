@@ -1,8 +1,8 @@
+/* register */
 
 	body {
 		font-family: 'Roboto', sans-serif;
 	}
-	/* pitäs saaha nää keskelle*/
 	.box {
 		width: 100%;
 		height: 100%;
@@ -12,7 +12,6 @@
 		vertical-align: center;
 		justify-items: center;
 	}
-	/* pitäs saaha nää keskelle*/
 	.logo {
 		justify-content: center;
 		display: flex;
@@ -42,5 +41,7 @@
 		height: 56px;
 		background-color: rgba(255, 103.06, 103.06, 1);
 	}
+
+
 
 
