@@ -10,10 +10,13 @@
 		justify-content: center;
 		gap: 5%;
 		vertical-align: center;
+		justify-items: center;
 	}
 	/* pitäs saaha nää keskelle*/
 	.Ellipse1 {
 		justify-content: center;
+		display: flex;
+		align-items: center;
 		width: 148px;
 		height: 148px;
 		background-color: rgba(255, 103.06, 103.06, 1);
