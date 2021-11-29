@@ -10,6 +10,10 @@
 		margin-left:12px;
 	}
 
+	h4{
+		place-content: center;
+	}
+
 	form {
 		position:center;
 		margin: auto;
@@ -41,7 +45,7 @@
 		border: 0;
 		background: #e74c3c;
 		border-radius:7px;
-		padding: 10px;
+		padding-bottom: 35px;
 		font-size:22px;
 		margin: 15px;
 	}
