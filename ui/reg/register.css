@@ -1,54 +1,58 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	background: gray;
+}
 
+.flex-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+}
 
-	body {
-		font-family: 'Roboto', sans-serif;
-		background: gray;
-	}
-	/* pitäs saaha nää keskelle*/
-	h2{
-		color:rgba(255,255,255,.8);
-		margin-left:12px;
-	}
+h2{
+	color:rgba(255,255,255,.8);
+	text-align: center;
+}
 
-	form {
-		position:center;
-		margin: auto;
-		width: 380px;
-		height: auto;
-	}
+form {
+	position:center;
+	margin: auto;
+	height: auto;
+}
 
-	input {
-		padding: 16px;
-		border-radius:7px;
-		border:0;
-		background: rgba(255,255,255,255);
-		display: block;
-		margin: 15px;
-		width: 300px;
-		color:white;
-		font-size:18px;
-		height: 54px;
-	}
+input {
+	padding: 16px;
+	border-radius:7px;
+	border:0;
+	background: rgba(255,255,255,255);
+	display: block;
+	margin: 15px;
+	width: 300px;
+	color:white;
+	font-size:18px;
+	height: 54px;
+}
 
-	input:focus {
-		outline-color: rgba(0,0,0,0);
-		background: gray;
-	}
+input:focus {
+	outline-color: rgba(0,0,0,0);
+	background: gray;
+}
 
-	button {
-		height: 70px;
-		width: 332px;
-		border: 0;
-		background: #e74c3c;
-		border-radius:7px;
-		padding: 10px;
-		font-size:22px;
-		margin: 15px;
-	}
+button {
+	height: 70px;
+	width: 332px;
+	border: 0;
+	background: #e74c3c;
+	border-radius:7px;
+	padding: 10px;
+	font-size:22px;
+	margin: 15px;
+}
 
-	.text {
-		font-size: 18px;
-		line-height: 100%;
-		color: black;
-	}
+.text {
+	font-size: 18px;
+	line-height: 100%;
+	color: black;
+}
 
