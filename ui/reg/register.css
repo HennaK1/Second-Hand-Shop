@@ -18,7 +18,7 @@
 
 	.headerreg {
 		padding: 10px;
-		background: #d6ddff;
+		background: #bfaba4;
 		color: black;
 		font-size: 30px;
 		overflow: hidden;
@@ -30,8 +30,8 @@
 	}
 
 	.logo {
-		width: 200px;
-		height: 200px;
+		width: 150px;
+		height: 150px;
 		justify-content: center;
 		align-content: flex-end;
 	}
@@ -81,7 +81,7 @@
 
 	.button-login {
 		align-items: center;
-		background-color: #d6ddff;
+		background-color: #bfaba4;
 		border: 2px solid #111;
 		border-radius: 8px;
 		box-sizing: border-box;
