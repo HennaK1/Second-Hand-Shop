@@ -10,23 +10,6 @@
 		margin-left:12px;
 	}
 
-	h4{
-		place-content: center;
-	}
-
-	.header {
-
-		padding: 10px;
-		text-align: center;
-		background: #e74c3c;
-		color: black;
-		font-size: 30px;
-		overflow: hidden;
-		position: sticky;
-		position: -webkit-sticky;
-		top: 0;
-	}
-
 	form {
 		position:center;
 		margin: auto;
@@ -58,7 +41,7 @@
 		border: 0;
 		background: #e74c3c;
 		border-radius:7px;
-		padding-bottom: 35px;
+		padding: 10px;
 		font-size:22px;
 		margin: 15px;
 	}
