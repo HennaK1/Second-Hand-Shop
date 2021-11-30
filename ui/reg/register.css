@@ -142,3 +142,58 @@
 		line-height: 100%;
 		color: black;
 	}
+	.sidebar {
+		margin: 0;
+		padding: 0;
+		width: 90px;
+		background-color: #ffffff;
+		position: fixed;
+		height: 100%;
+		overflow: auto;
+	}
+
+	.sidebar a {
+		display: block;
+		color: black;
+		padding: 16px;
+		text-decoration: none;
+	}
+
+	.sidebar a.active {
+		background-color: #213357;
+		color: white;
+	}
+
+	.sidebar a:hover:not(.active) {
+		background-color: #555;
+		color: white;
+	}
+	.sidebar.top{
+		display: flex;
+		flex-direction: row;
+		overflow: auto;
+		width: 100%;
+		height: auto;
+		position: relative;
+		text-align: center;
+		float: none;
+	}
+
+	@media screen and (max-width: 700px) {
+		.sidebar {
+			width: 100%;
+			height: auto;
+			position: relative;
+			text-align: center;
+			float: none;
+		}
+		.sidebar a {float: left;}
+		div.content {margin-left: 0;}
+	}
+
+	@media screen and (max-width: 400px) {
+		.sidebar a {
+			text-align: center;
+			float: none;
+		}
+	}
