@@ -1,0 +1,168 @@
+body {
+    font-family: 'Lobster', cursive;
+    background: gray;
+    margin: 0;
+}
+.headercon {
+    padding: 10px;
+    background: #bfaba4;
+    color: black;
+    font-size: 30px;
+    overflow: hidden;
+    position: sticky;
+    position: -webkit-sticky;
+    display: flex;
+    text-align: center;
+    width: 100%;
+}
+
+h1 {
+    font-family: 'Lobster', cursive;
+    font-weight: 600;
+    font-size: 40px;
+    color: white;
+    text-align: center;
+}
+
+h4 {
+    font-family: 'Lobster', cursive;
+    font-weight: 400;
+    font-size: 20px;
+    color: #ffffff;
+    line-height: 1.5;
+}
+
+.containerheader{
+    text-align:center;
+    display:inline-block;
+    position:relative;
+    width:100%;
+}
+.logo {
+    width: 140px;
+    height: 140px;
+    justify-content: center;
+    align-content: flex-end;
+}
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 90px;
+    background-color: #ffffff;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.flex-container{
+    display: grid;
+    flex-direction: column;
+    justify-content: center;
+    alignment: center;
+    width: 100%;
+}
+
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.sidebar a.active {
+    background-color: #213357;
+    color: white;
+}
+
+.sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+.sidebar.top{
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    width: 100%;
+    height: auto;
+    position: relative;
+    text-align: center;
+    float: none;
+}
+
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        text-align: center;
+        float: none;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+}
+
+.button-email {
+    align-items: center;
+    background-color: #bfaba4;
+    border: 2px solid #111;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    font-family: 'Lobster', cursive;
+    font-size: 16px;
+    height: 48px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-email:after {
+    background-color: #111;
+    border-radius: 8px;
+    content: "email us";
+    display: block;
+    height: 48px;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    top: -2px;
+    transform: translate(8px, 8px);
+    transition: transform .2s ease-out;
+    z-index: -1;
+}
+
+.button-email:hover:after {
+    transform: translate(0, 0);
+}
+
+.button-email:active {
+    background-color: gray;
+    outline: 0;
+}
+
+.button-email:hover {
+    outline: 0;
+}
+
+@media (min-width: 768px) {
+    .button-email {
+        padding: 0 40px;
+    }
+}

@@ -3,13 +3,12 @@
 		background: gray;
 		margin: 0;
 	}
-	/* pitäs saaha nää keskelle*/
 	h2{
 		color:rgba(255,255,255,.8);
 		margin-left:12px;
 	}
 
-	.container {
+	.containerheader {
 		text-align:center;
 		display:inline-block;
 		position:relative;
@@ -30,8 +29,8 @@
 	}
 
 	.logo {
-		width: 150px;
-		height: 150px;
+		width: 140px;
+		height: 140px;
 		justify-content: center;
 		align-content: flex-end;
 	}
@@ -44,104 +43,14 @@
 		width: 100%;
 	}
 
-	h2{
-		color:rgba(255,255,255,.8);
+	h1{
+		font-family: 'Lobster', cursive;
+		font-weight: 600;
+		font-size: 40px;
+		color: white;
 		text-align: center;
-		font-family: 'Lobster', cursive;
-		font-size: 30px;
-		color: black;
-		letter-spacing: 2px;
 	}
 
-	form {
-		display: flex;
-		flex-direction: column;
-		position:center;
-		margin: auto;
-		height: auto;
-	}
-
-	input {
-		font-family: 'Lobster', cursive;
-		padding: 10px;
-		border-radius:7px;
-		border:0;
-		background: rgba(255,255,255,255);
-		display: block;
-		margin: 15px;
-		width: 300px;
-		font-size:18px;
-		height: 54px;
-	}
-
-	input:focus {
-		outline-color: black;
-		background: white;
-	}
-
-	.button-login {
-		align-items: center;
-		background-color: #bfaba4;
-		border: 2px solid #111;
-		border-radius: 8px;
-		box-sizing: border-box;
-		color: #111;
-		cursor: pointer;
-		display: flex;
-		font-family: 'Lobster', cursive;
-		font-size: 16px;
-		height: 48px;
-		justify-content: center;
-		line-height: 24px;
-		max-width: 100%;
-		padding: 0 25px;
-		position: relative;
-		text-align: center;
-		text-decoration: none;
-		user-select: none;
-		-webkit-user-select: none;
-		touch-action: manipulation;
-	}
-
-	.button-login:after {
-		background-color: #111;
-		border-radius: 8px;
-		content: "";
-		display: block;
-		height: 48px;
-		left: 0;
-		width: 100%;
-		position: absolute;
-		top: -2px;
-		transform: translate(8px, 8px);
-		transition: transform .2s ease-out;
-		z-index: -1;
-	}
-
-	.button-login:hover:after {
-		transform: translate(0, 0);
-	}
-
-	.button-login:active {
-		background-color: #ffdeda;
-		outline: 0;
-	}
-
-	.button-login:hover {
-		outline: 0;
-	}
-
-	@media (min-width: 768px) {
-		.button-login {
-			padding: 0 40px;
-		}
-	}
-
-	.text {
-		font-size: 18px;
-		line-height: 100%;
-		color: black;
-	}
 	.sidebar {
 		margin: 0;
 		padding: 0;
@@ -196,4 +105,94 @@
 			text-align: center;
 			float: none;
 		}
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		position:center;
+		margin: auto;
+		height: auto;
+	}
+
+	input {
+		font-family: 'Lobster', cursive;
+		padding: 10px;
+		border-radius:7px;
+		border:0;
+		background: rgba(255,255,255,255);
+		display: block;
+		margin: 15px;
+		width: 300px;
+		font-size:18px;
+		height: 54px;
+	}
+
+	input:focus {
+		outline-color: black;
+		background: white;
+	}
+
+	.button-register {
+		align-items: center;
+		background-color: #bfaba4;
+		border: 2px solid #111;
+		border-radius: 8px;
+		box-sizing: border-box;
+		color: #111;
+		cursor: pointer;
+		display: flex;
+		font-family: 'Lobster', cursive;
+		font-size: 16px;
+		height: 48px;
+		justify-content: center;
+		line-height: 24px;
+		max-width: 100%;
+		padding: 0 25px;
+		position: relative;
+		text-align: center;
+		text-decoration: none;
+		user-select: none;
+		-webkit-user-select: none;
+		touch-action: manipulation;
+	}
+
+	.button-register:after {
+		background-color: #111;
+		border-radius: 8px;
+		content: "";
+		display: block;
+		height: 48px;
+		left: 0;
+		width: 100%;
+		position: absolute;
+		top: -2px;
+		transform: translate(8px, 8px);
+		transition: transform .2s ease-out;
+		z-index: -1;
+	}
+
+	.button-register:hover:after {
+		transform: translate(0, 0);
+	}
+
+	.button-register:active {
+		background-color: #ffdeda;
+		outline: 0;
+	}
+
+	.button-register:hover {
+		outline: 0;
+	}
+
+	@media (min-width: 768px) {
+		.button-register {
+			padding: 0 40px;
+		}
+	}
+
+	.text {
+		font-size: 18px;
+		line-height: 100%;
+		color: black;
 	}
