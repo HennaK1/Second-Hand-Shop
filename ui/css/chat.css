@@ -1,0 +1,105 @@
+h1 {
+    font-family: 'Lobster', cursive;
+    font-weight: 600;
+    font-size: 40px;
+    color: white;
+    text-align: center;
+}
+.image{
+    width: 50%;
+    float: left;
+}
+
+body {
+    font-family: 'Lobster', cursive;
+    background: gray;
+    margin: 0;
+}
+.headerchat {
+    padding: 10px;
+    background: #bfaba4;
+    color: black;
+    font-size: 30px;
+    overflow: hidden;
+    position: sticky;
+    position: -webkit-sticky;
+    display: flex;
+    text-align: center;
+    width: 100%;
+}
+
+p {
+    font-family: "Courier New", serif;
+    text-align: center;
+    font-size: 1.3em;
+    float: right;
+    padding: 10px;
+}
+
+.headercontainer{
+    text-align:center;
+    display:inline-block;
+    position:relative;
+    width:100%;
+}
+.logo {
+    width: 140px;
+    height: 140px;
+    justify-content: center;
+    align-content: flex-end;
+}
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 90px;
+    background-color: #ffffff;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.sidebar a.active {
+    background-color: #213357;
+    color: white;
+}
+
+.sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+.sidebar.top{
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    width: 100%;
+    height: auto;
+    position: relative;
+    text-align: center;
+    float: none;
+}
+
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        text-align: center;
+        float: none;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+}
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+}
