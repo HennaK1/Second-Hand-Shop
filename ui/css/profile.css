@@ -121,9 +121,8 @@ h1{
     color: black;
 }
 .topnav {
-    float: none;
-    position: absolute;
-    top: 90%;
+    position: fixed;
+    bottom: 0;
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: hidden;
@@ -163,28 +162,105 @@ h1{
         transform: none;
     }
 }
-.container {
-    display: grid;
-    justify-items: center;
 
-}
-div.gallery {
-    margin: 5px;
-    border: 1px solid #ccc;
-    float: left;
-    width: 180px;
-}
 
-div.gallery:hover {
-    border: 1px solid #777;
-}
 
-div.gallery img {
-    width: 100%;
-    height: auto;
-}
 
-div.desc {
-    padding: 15px;
-    text-align: center;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
