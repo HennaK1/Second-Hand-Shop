@@ -13,6 +13,9 @@ body {
     text-align: center;
     width: 100%;
 }
+.phrase {
+    text-align: center;
+}
 .headercontainer {
     text-align:center;
     display:inline-block;
