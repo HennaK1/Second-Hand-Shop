@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta Caption="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/front.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,16 +12,23 @@
 <body>
 
 <div class="headerfront">
-    <div class="headercontainer"> <h1> Happy Clothes </h1> </div>
+    <div class="headercontainer"> <p> Happy Clothes </p> </div>
 </div>
 
 <div class="topnav">
-    <a href="front.html">Home</a>
+    <a href="#Home">Home</a>
     <a href="#Search">Search</a>
-    <a href="profile.html">Profile</a>
-    <a href="upload.html">Post</a>
+    <a href="#Profile">Profile</a>
+    <a href="logout.html">Logout</a>
 </div>
 
+<h1 class="phrase">Users images:</h1>
+<ul id="list">
+    <!-- js tekee tähän listan käyttäjien tuotteista -->
+</ul>
 
+<script src="js/check-login.js"></script>
+<script src="js/serialize.js"></script>
+<script src="js/front.js"></script>
 </body>
 </html>

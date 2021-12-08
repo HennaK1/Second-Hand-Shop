@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta Caption="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/register.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,23 +25,24 @@
 </div>
 
 <div class="flex-container">
-    <form action="">
+    <form action="TÄHÄN LOCALHOST??" method="post" id="add-user-form">
         <h1>Register</h1>
         <label>
-            <input type="text" class="user" placeholder="enter Caption"/>
+            <input type="text" class="user" name="name" placeholder="enter name"/>
         </label>
         <label>
-            <input type="text" class="pass" placeholder="enter email"/>
+            <input type="text" class="pass" name="email" placeholder="enter email"/>
         </label>
         <label>
-            <input type="text" class="pass" placeholder="choose username"/>
+            <input type="text" class="pass" name="username" placeholder="choose username"/>
         </label>
         <label>
-            <input type="password" class="pass" placeholder="choose password"/>
+            <input type="password" class="pass" name="passwd" placeholder="choose password"/>
         </label>
-        <button type="Submit" class="button-register" role="button">Register</button>
+        <button type="Submit" class="button-register">Register</button>
     </form>
 </div>
-
+<script src="js/serialize.js"></script>
+<script src="js/login.js"></script>
 </body>
 </html>

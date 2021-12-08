@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/postimg.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nova+Oval&display=swap" rel="stylesheet">
+    <title>Post image</title>
+</head>
+<body>
+
+<div class="headerpost">
+    <div class="headercontainer"><h1>Add images to the Gallery</h1></div>
+</div>
+
+<div class="forms">
+    <div class="form-container">
+        <h3>Add product information for selling</h3>
+        <form class="border" action="localhost??" method="post"
+              enctype="multipart/form-data" id="addProductForm">
+            <input class="border" type="text" name="price" placeholder="Price">
+            <input class="border" type="text" name="gps" placeholder="Location">
+            <input class="border" type="text" name="caption" placeholder="Caption">
+            <input class="border" type="file" name="product" accept="image/*" placeholder="Choose image">
+            <button class="border button-upload" type="submit">Upload</button>
+        </form>
+    </div>
+</div>
+</div>
+
+<div class="topnav">
+    <a href="#news">Home</a>
+    <a href="#Search">Search</a>
+    <a href="#Profile">Profile</a>
+    <a href="logout.html">Logout</a>
+</div>
+
+<script src="js/check-login.js"></script>
+<script src="js/serialize.js"></script>
+<script src="js/add-img.js"></script>
+</body>
+</html>
