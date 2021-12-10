@@ -2,11 +2,11 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const productRoute = require("./routes/productRoute");
-const userRoute = require("./routes/userRoute");
-const authRoute = require("./routes/authRoute");
-const passport = require("./utils/pass");
-const { httpError } = require("./utils/errors");
+const productRoute = require("./back/routes/productRoute");
+const userRoute = require("./back/routes/userRoute");
+const authRoute = require("./back/routes/authRoute");
+const passport = require("./back/utils/pass");
+const { httpError } = require("./back/utils/errors");
 
 const app = express();
 const port = 3000;
