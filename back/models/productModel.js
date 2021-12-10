@@ -1,5 +1,5 @@
 "use strict";
-const pool = require("../database/kirppis");
+const pool = require("../../tietokanta/kirppis");
 const { httpError } = require("../utils/errors");
 const promisePool = pool.promise();
 
