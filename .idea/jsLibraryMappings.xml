@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-<<<<<<< HEAD
-=======
-    <file url="PROJECT" libraries="{ef35fbb7e1}" />
->>>>>>> origin/henna
     <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>
