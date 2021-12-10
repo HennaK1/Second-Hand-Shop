@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/search.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nova+Oval&display=swap" rel="stylesheet">
+    <title>Search</title>
+</head>
+<body>
+
+<div class="headersearch">
+    <div class="headercontainer"><h1>Search</h1></div>
+</div>
+
+<div class="categorysearch">
+    <p>Choose A Category</p>
+    <div class="select" tabindex="1">
+        <input class="selectopt" name="CategoryName" type="radio" id="opt1" checked>
+        <label for="opt1" class="option">Shirts</label>
+        <input class="selectopt" name="CategoryName" type="radio" id="opt2">
+        <label for="opt2" class="option">Jackets</label>
+        <input class="selectopt" name="CategoryName" type="radio" id="opt3">
+        <label for="opt3" class="option">Trousers</label>
+        <input class="selectopt" name="CategoryName" type="radio" id="opt4">
+        <label for="opt4" class="option">Shoes</label>
+        <input class="selectopt" name="CategoryName" type="radio" id="opt5">
+        <label for="opt5" class="option">Hats</label>
+        <input class="selectopt" name="CategoryName" type="radio" id="opt6">
+        <label for="opt5" class="option">Accessories</label>
+    </div>
+</div>
+
+<ul id ="categorieslist">
+    <!--- Tähän js tekee listan tuotteista kategorioittain-->
+</ul>
+
+<div class="topnav">
+    <a href="#Home">Home</a>
+    <a href="#Search">Search</a>
+    <a href="#Profile">Profile</a>
+    <a href="logout.html">Logout</a>
+</div>
+
+<script src="js/check-login.js"></script>
+<script src="js/serialize.js"></script>
+<script src="js/search.js"></script>
+</body>
+</html>
