@@ -2,8 +2,8 @@
 const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
-const addForm = document.querySelector('#addCatForm');
-const userList = document.querySelector('.add-owner');
+const addForm = document.querySelector('#addProductForm');
+const userList = document.querySelector('.add-user');
 
 // submit add cat form
 addForm.addEventListener('submit', async (evt) => {

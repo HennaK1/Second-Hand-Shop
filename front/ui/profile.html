@@ -2,18 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/front.css">
+    <meta Caption="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/profile.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nova+Oval&display=swap" rel="stylesheet">
-    <title>Front Page</title>
+    <title>Profile</title>
 </head>
 <body>
 
-<div class="headerfront">
-    <div class="headercontainer"> <p> Happy Clothes </p> </div>
+<div class="headerprofile">
+    <div class="headercontainer"><h1>PROFILE</h1></div>
 </div>
+
+<div id="userlist" class="section1"><img class="imgprofile" src="/front/uiont/ui/media/avatar.jpeg" alt="Avatar">
+<ul>
+   <p>Username:</p>
+    <p>Name:</p>
+    <p>City:<p>
+    <p>Bio:</p>
+</ul>
+</div>
+
+<ul id="listuser">
+<!-- tähän HAETUN käyttäjän kuvat?? -->
+
+</ul>
+
 
 <div class="topnav">
     <a href="#news">Home</a>
@@ -22,12 +37,8 @@
     <a href="logout.html">Logout</a>
 </div>
 
-<ul id="list">
-    <!-- js tekee tähän listan -->
-</ul>
-
+<script src="js/profile.js"></script>
 <script src="js/check-login.js"></script>
 <script src="js/serialize.js"></script>
-<script src="js/front.js"></script>
 </body>
 </html>
