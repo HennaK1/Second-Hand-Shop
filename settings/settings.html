@@ -17,13 +17,16 @@
 </div>
 
 
-<div class="center">
-    <button class="button-settings" role="button">Change your name</button>
-    <button class="button-settings" role="button">Change your profile picture</button>
-    <button class="button-settings" role="button">Change your email</button>
-    <button class="button-settings" role="button">Change your password</button>
-    <button class="button-settings" role="button">Delete account</button>
-</div>
+
+<form id="settings-modify">
+    <input class="button-settings" type="text" name="name" placeholder="Change your name">
+    <div class="tooltip">
+    <input class="button-settings" type="file" name="profilepicture" accept="image/*">
+    <span class="tooltiptext">Change your profile picture</span></div>
+    <input class="button-settings" type="text" name="email" placeholder="Change your email">
+    <input class="button-settings" type="text" name="password" placeholder="Change your password">
+    <button class="button-settings" type="submit">Save changes</button>
+</form>
 
 <div class="topnav">
     <a href="../front/front.html">Home</a>
