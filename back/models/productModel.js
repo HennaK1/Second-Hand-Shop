@@ -94,16 +94,16 @@ const modifyProduct = async (
     owner,
     Gps,
     Price,
-    role,
+    Role,
     next
 ) => {
   let sql =
       "UPDATE wop_product SET ProductId = ?, Caption = ?, Gps = ? WHERE Price = ? AND owner = ?;";
   let params = [ProductId, Caption, Gps, Price, owner];
-  if (role === 0) {
+  if (Role === 0) {
     sql =
-        "UPDATE wop_product SET ProductId = ?, Caption = ?, Gps = ?, owner = ? WHERE Price = ?;";
-    params = [ProductId, Caption, Gps, owner, Price];
+        "UPDATE wop_product SET ProductId = ?, Caption = ?, Gps = ?, ProductOwner = ? WHERE Price = ?;";
+    params = [ProductId, Caption, Gps, Price];
   }
   console.log("sql", sql);
   try {
@@ -115,11 +115,11 @@ const modifyProduct = async (
   }
 };
 
-const deleteProduct = async (id, owner_id, role, next) => {
-  let sql = "DELETE FROM wop_product WHERE product_id = ? AND owner = ?";
+const deleteProduct = async (id, owner_id, Role, next) => {
+  let sql = "DELETE FROM Product WHERE ProductId = ? AND ProductOwner = ?";
   let params = [id, owner_id];
-  if (role === 0) {
-    sql = "DELETE FROM wop_product WHERE product_id = ?";
+  if (Role === 0) {
+    sql = "DELETE FROM Product WHERE ProductId = ?";
     params = [id];
   }
   try {
