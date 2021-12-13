@@ -14,7 +14,7 @@ const url = 'http://localhost:3000'; // change url when uploading to server
 
 //];
 
-const optionElement = document.querySelector(".add-category");
+//const optionElement = document.querySelector(".add-category");
 
 //optionElement.innerHTML = '';
 
@@ -25,19 +25,21 @@ const optionElement = document.querySelector(".add-category");
         //</option>`;
 //}
 
+
 // select existing html elements
 const addForm = document.querySelector('#addProductForm');
 const categoryList = document.querySelector('.add-category');
 
-// create user options to <select>
+
+// create category options to <select>
 const createCategoryOptions = (categories) => {
 
     categoryList.innerHTML = '';
-    categories.forEach((categories) => {
+    categoryList.forEach((Category) => {
         // create options with DOM methods
         const option = document.createElement('option');
-        option.value = categories.CategoryName;
-        option.innerHTML = categories.CategoryName;
+        option.value = Category.CategoryName;
+        option.innerHTML = Category.CategoryName;
         option.classList.add('border');
         categoryList.appendChild(option);
     });
@@ -52,13 +54,14 @@ const getCategories = async () => {
                 Authorization: 'Bearer ' + sessionStorage.getItem('token'),
             },
         };
-        const response = await fetch(url + '/categories', options);
+        const response = await fetch(url + '/category', options);
         const categories = await response.json();
         createCategoryOptions(categories);
     } catch (e) {
         console.log(e.message);
     }
 };
+getCategories();
 
 // submit add product form
 addForm.addEventListener('submit', async (evt) => {
@@ -87,14 +90,3 @@ const getGategoryData = async () => {
     }
 };
 
-const getCategories = async () => {
-    try {
-        const response = await fetch(url + '/product');
-        const categories = await response.json();
-        getCategoryData(categories);
-    } catch (e) {
-        console.log(e.message);
-    }
-};
-
-getCategories();

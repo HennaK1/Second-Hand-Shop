@@ -111,6 +111,18 @@ const deleteProduct = async (id, UserName, Role, next) => {
     next(httpError("Database error", 500));
   }
 };
+const getCategories = async (CategoryName, next) => {
+  try {
+    const [rows] = await promisePool.execute(
+        "SELECT CategoryName FROM Category where CategoryId=?",
+        [CategoryName]
+    );
+    return rows;
+  } catch (e) {
+    console.error("getCategory error", e.message);
+    next(httpError("Database error", 500));
+  }
+};
 
 module.exports = {
   getAllProducts,

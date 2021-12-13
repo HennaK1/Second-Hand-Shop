@@ -17,7 +17,7 @@ const product_list_get = async (req, res, next) => {
     if (products.length > 0) {
       res.json(products);
     } else {
-      next("No users found", 404);
+      next("No products found", 404);
     }
   } catch (e) {
     console.log("product_list_get error", e.message);
@@ -31,7 +31,7 @@ const product_get = async (req, res, next) => {
     if (answer.length > 0) {
       res.json(answer.pop());
     } else {
-      next(httpError("No user found", 404));
+      next(httpError("No product found", 404));
     }
   } catch (e) {
     console.log("product_get error", e.message);
@@ -40,7 +40,7 @@ const product_get = async (req, res, next) => {
 };
 
 const product_post = async (req, res, next) => {
-  console.log("user_post", req.body, req.file, req.user);
+  console.log("product_post", req.body, req.file, req.user);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     console.log("product_post validation", errors.array());
@@ -60,15 +60,16 @@ const product_post = async (req, res, next) => {
         "./uploads/thumbnails" + req.file.ProductId
     );
 
-    const { Caption, ImageLocation, Price, CategoryName } = req.body;
+    const {Price, Gps, Caption, CategoryName, ImageLocation } = req.body;
 
     const result = await addProduct(
+        Price,
+        Gps,
         Caption,
+        CategoryName,
         ImageLocation,
         req.user.UserName,
         req.file.ProductId,
-        CategoryName,
-        Price,
         next
     );
     if (thumb) {
