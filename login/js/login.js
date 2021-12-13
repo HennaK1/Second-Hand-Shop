@@ -3,7 +3,6 @@ const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
 const loginForm = document.querySelector('#login-form');
-const addUserForm = document.querySelector('#add-user-form');
 
 // login
 loginForm.addEventListener('submit', async (evt) => {
@@ -28,20 +27,4 @@ loginForm.addEventListener('submit', async (evt) => {
         sessionStorage.setItem('user', JSON.stringify(json.user));
         location.href = 'front.html';
     }
-});
-
-// submit register form
-addUserForm.addEventListener('submit', async (evt) => {
-    evt.preventDefault();
-    const data = serializeJson(addUserForm);
-    const fetchOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    };
-    const response = await fetch(url + '/auth/register', fetchOptions);
-    const json = await response.json();
-    alert(json.message);
 });

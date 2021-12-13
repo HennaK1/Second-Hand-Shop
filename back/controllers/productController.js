@@ -26,9 +26,9 @@ const product_list_get = async (req, res, next) => {
 
 const product_get = async (req, res, next) => {
   try {
-    const vastaus = await getProduct(req.params.id, next);
-    if (vastaus.length > 0) {
-      res.json(vastaus.pop());
+    const answer = await getProduct(req.params.id, next);
+    if (answer.length > 0) {
+      res.json(answer.pop());
     } else {
       next(httpError("No user found", 404));
     }

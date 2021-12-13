@@ -20,6 +20,7 @@ app.use("/thumbnails", express.static("thumbnails"));
 
 app.use(passport.initialize());
 
+
 app.use("/auth", authRoute);
 app.use("/product", productRoute);
 app.use("/user", passport.authenticate("jwt", { session: false }), userRoute);
