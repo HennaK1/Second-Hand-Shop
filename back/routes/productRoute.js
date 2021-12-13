@@ -23,7 +23,7 @@ const router = express.Router();
 router.route("/").get(product_list_get).post(
     //passport.authenticate("jwt", { session: false }),
     upload.single("product"),
-    body("name").notEmpty().escape(),
+    body("Price").notEmpty().escape(),
     body("birthdate").isDate(),
     body("weight").isNumeric(),
     product_post
