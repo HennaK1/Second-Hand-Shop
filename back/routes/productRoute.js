@@ -23,9 +23,10 @@ const router = express.Router();
 router.route("/").get(product_list_get).post(
     //passport.authenticate("jwt", { session: false }),
     upload.single("product"),
-    body("Price").notEmpty().escape(),
-    body("birthdate").isDate(),
-    body("weight").isNumeric(),
+    body("Caption").notEmpty().escape(),
+    body("Gps").notEmpty().escape(),
+    body("CategoryName").notEmpty().escape(),
+    body("Price").isNumeric(),
     product_post
 );
 
@@ -34,9 +35,10 @@ router
 .get(product_get)
 .delete(product_delete)
 .put(
-    body("name").notEmpty().escape(),
-    body("birthdate").isDate(),
-    body("weight").isNumeric(),
+    body("Caption").notEmpty().escape(),
+    body("Gps").notEmpty().escape(),
+    body("CategoryName").notEmpty().escape(),
+    body("Price").isNumeric(),
     product_put
 );
 
