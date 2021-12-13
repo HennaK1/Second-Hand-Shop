@@ -51,6 +51,7 @@ CREATE TABLE Product
     ImageLocation INT NOT NULL,
     UserName VARCHAR(60) NOT NULL,
     CategoryId INT NOT NULL,
+    ProductOwner VARCHAR(60) NOT NULL,
     PRIMARY KEY (ProductId),
     FOREIGN KEY (UserName) REFERENCES User(UserName),
     FOREIGN KEY (CategoryId) REFERENCES Category(CategoryId)

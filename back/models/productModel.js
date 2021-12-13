@@ -17,8 +17,9 @@ const getAllProducts = async (next) => {
 	ProductId,
 	UserName,
 	FROM Product
-	JOIN Category ON 
-	wop_product.owner = wop_user.user_id`);
+	JOIN Category ON
+  ProductOwner = UserName 
+	FROM User`);
     return rows;
   } catch (e) {
     console.error("getAllProducts error", e.message);
@@ -47,16 +48,15 @@ const getProduct = async (id, next) => {
         `
 	  SELECT 
 	  ProductId, 
-	  wop_product.name, 
 	  Gps, 
 	  owner, 
 	  ImageLocation,
 	  Price, 
 	  LikeCount,
-	  wop_user.name as ownername 
-	  FROM wop_product 
-	  JOIN wop_user ON 
-	  wop_product.owner = wop_user.user_id
+	  UserName
+	  FROM Product 
+	  JOIN UserName ON 
+	  ProductOwner = UserName
 	  WHERE product_id = ?`,
         [id]
     );
