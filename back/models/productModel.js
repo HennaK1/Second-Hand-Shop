@@ -7,19 +7,10 @@ const getAllProducts = async (next) => {
   try {
     // TODO: do the LEFT (or INNER) JOIN to get owner's name as ownername (from wop_user table).
     const [rows] = await promisePool.execute(`
-	SELECT 
-	Caption,
-	CategoryId,
-	Gps,
-	ImageLocation,
-	LikeCount,
-	Price,
-	ProductId,
-	UserName,
-  FROM Product
-  JOIN UserName ON
-  ProductOwner.UserName
-	FROM User`);
+        SELECT * FROM Product 
+        JOIN Category ON CategoryName.CategoryId 
+        JOIN User ON ImageLocation.UserName = User.UserName;`
+    );
     return rows;
   } catch (e) {
     console.error("getAllProducts error", e.message);
@@ -32,8 +23,7 @@ const getProductsByKeyword = async (next) => {
     // TODO: do the LEFT (or INNER) JOIN to get owner's name as ownername (from wop_user table).
     const [rows] = await promisePool.execute(`
 	SELECT 
-  CategoryId,
-	CategoryName, 
+  CategoryName, 
 	FROM Category`);
     return rows;
   } catch (e) {
@@ -49,7 +39,7 @@ const getProduct = async (id, next) => {
 	  SELECT *
 	  FROM ImageLocation, 
 	  JOIN Category ON 
-	  ImageLocation.CategoryName = Category.CategoryName
+	  ImageLocation.CategoryId = Category.CategoryId
 	  WHERE ImageLocation.CategoryId = ?`,
         [id]
     );
@@ -61,17 +51,17 @@ const getProduct = async (id, next) => {
 };
 
 const addProduct = async (
-    ImageLocation,
+    Product,
     Caption,
     UserName,
-    CategoryName,
-    ProductLocation,
+    CategoryId,
+    ImageLocation,
     next
 ) => {
   try {
     const [rows] = await promisePool.execute(
-        "INSERT INTO ImageLocation (Caption, UserName, CategoryName, ProductLocation,) VALUES (?, ?, ?, ?, ?)",
-        [Caption, UserName, CategoryName, ProductLocation],
+        "INSERT INTO Product (Caption, CategoryId, UserName, ImageLocation,) VALUES (?, ?, ?, ?)",
+        [Caption, CategoryId, UserName, ImageLocation],
     );
     return rows;
   } catch (e) {
@@ -81,23 +71,20 @@ const addProduct = async (
 };
 
 const modifyProduct = async (
-    CategoryName,
-    CategoryId,
     ProductOwner,
     Caption,
-    owner,
     Gps,
     Price,
     Role,
     next
 ) => {
   let sql =
-      "UPDATE Product SET CategoryName = ?, Caption = ?, Gps = ?, Price = ? WHERE ProductId = ? AND owner = ?;";
-  let params = [CategoryName, Caption, Gps, Price, owner];
+      "UPDATE Product SET Caption = ?, Gps = ?, Price = ? WHERE ProductId = ? AND ProductOwner = ?;";
+  let params = [ Caption, Gps, Price, ProductOwner];
   if (Role === 0) {
     sql =
-        "UPDATE Product SET CategoryId = ?, Caption = ?, Gps = ?, ProductOwner = ? WHERE ProductId = ?;";
-    params = [CategoryId, Caption, Gps, Price];
+        "UPDATE Product SET Caption = ?, Gps = ?, ProductOwner = ? WHERE ProductId = ?;";
+    params = [Caption, Gps, Price];
   }
   console.log("sql", sql);
   try {
@@ -110,7 +97,7 @@ const modifyProduct = async (
 };
 
 const deleteProduct = async (id, UserName, Role, next) => {
-  let sql = "DELETE FROM Product WHERE ImageLocation = ? AND UserName = ?";
+  let sql = "DELETE FROM Product WHERE ImageLocation = ? AND UserName = ?;";
   let params = [id, UserName];
   if (Role === 0) {
     sql = "DELETE FROM Product WHERE ImageLocation = ?";

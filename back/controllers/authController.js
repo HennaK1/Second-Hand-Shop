@@ -43,7 +43,7 @@ const user_post = async (req, res, next) => {
     if (result.affectedRows > 0) {
       res.json({
         message: 'user added',
-        user_id: result.insertId,
+        UserName: result.insertId,
       });
     } else {
       next(httpError('No user inserted', 400));

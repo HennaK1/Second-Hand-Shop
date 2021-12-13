@@ -6,16 +6,16 @@ const {
   getProduct,
   addProduct,
   deleteProduct,
-    modifyProduct,
+  modifyProduct,
 } = require("../models/productModel");
 const { httpError } = require("../utils/errors");
 const { makeThumbnail } = require("../utils/resize");
 
 const product_list_get = async (req, res, next) => {
   try {
-    const users = await getAllProducts(next);
-    if (users.length > 0) {
-      res.json(users);
+    const products = await getAllProducts(next);
+    if (products.length > 0) {
+      res.json(products);
     } else {
       next("No users found", 404);
     }
@@ -57,28 +57,25 @@ const product_post = async (req, res, next) => {
   try {
     const thumb = await makeThumbnail(
         req.file.path,
-        "./thumbnails/" + req.file.filename
+        "./uploads/thumbnails" + req.file.ProductId
     );
 
-    const { Caption, CategoryId, ImageLocation, LikeCount, ProductId, Price, UserName } = req.body;
+    const { Caption, ImageLocation, Price, CategoryName } = req.body;
 
     const result = await addProduct(
         Caption,
         ImageLocation,
-        req.user.user_id,
-        CategoryId,
-        req.file.filename,
-        LikeCount,
-        ProductId,
+        req.user.UserName,
+        req.file.ProductId,
+        CategoryName,
         Price,
-        UserName,
         next
     );
     if (thumb) {
       if (result.affectedRows > 0) {
         res.json({
           message: "product added",
-          product_id: result.insertId,
+          ProductId: result.insertId,
         });
       } else {
         next(httpError("No product inserted", 400));
@@ -100,28 +97,25 @@ const product_put = async (req, res, next) => {
   }
   // pvm VVVV-KK-PP esim 2010-05-28
   try {
-    const { Price, CategoryId, Caption, ProductOwner } = req.body;
+    const { Caption, } = req.body;
     /*let owner = req.user.user_id;
-    if (req.user.role === 0) {
+    if (req.user.Role === 0) {
       owner = req.body.owner;
     }*/
 
-    const owner = req.user.role === 0 ? req.body.ProductOwner : req.user.user_id;
+    const ProductOwner = req.user.Role === 0 ? req.body.owner : req.user.UserName;
 
     const result = await modifyProduct(
         Caption,
-        CategoryId,
-        owner,
-        Price,
         ProductOwner,
-        req.params.id,
-        req.user.role,
+        req.params.Imagelocation,
+        req.user.Role,
         next
     );
     if (result.affectedRows > 0) {
       res.json({
         message: "product modified",
-        product_id: result.insertId,
+        ProductId: result.insertId,
       });
     } else {
       next(httpError("No products modified", 400));
@@ -133,17 +127,18 @@ const product_put = async (req, res, next) => {
 };
 
 const product_delete = async (req, res, next) => {
+  console.log(req.user);
   try {
     const answer = await deleteProduct(
         req.params.id,
-        req.user.user_id,
-        req.user.role,
+        req.user.UserName,
+        req.user.Role,
         next
     );
     if (answer.affectedRows > 0) {
       res.json({
         message: "product deleted",
-        product_id: answer.insertId,
+        ProductId: answer.insertId,
       });
     } else {
       next(httpError("No product found", 404));
