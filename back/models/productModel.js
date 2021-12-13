@@ -16,9 +16,9 @@ const getAllProducts = async (next) => {
 	Price,
 	ProductId,
 	UserName,
-	FROM Product
-	JOIN Category ON
-  ProductOwner = UserName 
+  FROM Product
+  JOIN UserName ON
+  ProductOwner.UserName
 	FROM User`);
     return rows;
   } catch (e) {
@@ -46,18 +46,11 @@ const getProduct = async (id, next) => {
   try {
     const [rows] = await promisePool.execute(
         `
-	  SELECT 
-	  ProductId, 
-	  Gps, 
-	  owner, 
-	  ImageLocation,
-	  Price, 
-	  LikeCount,
-	  UserName
-	  FROM Product 
-	  JOIN UserName ON 
-	  ProductOwner = UserName
-	  WHERE product_id = ?`,
+	  SELECT *
+	  FROM ImageLocation, 
+	  JOIN Category ON 
+	  ImageLocation.CategoryName = Category.CategoryName
+	  WHERE ImageLocation.CategoryId = ?`,
         [id]
     );
     return rows;
@@ -68,18 +61,17 @@ const getProduct = async (id, next) => {
 };
 
 const addProduct = async (
-    ProductLocation,
+    ImageLocation,
     Caption,
     UserName,
     CategoryName,
+    ProductLocation,
     next
 ) => {
   try {
     const [rows] = await promisePool.execute(
-        "INSERT INTO tiedosto (ProductLocation, Caption, UserName) VALUES (?, ?, ?, ?, ?)",
-        [ProductLocation, Caption, UserName],
-        "INSERT INTO relationship (CategoryName, Tiedostonumero)VALUES (?, LAST_INSERT_ID()",
-        [CategoryName]
+        "INSERT INTO ImageLocation (Caption, UserName, CategoryName, ProductLocation,) VALUES (?, ?, ?, ?, ?)",
+        [Caption, UserName, CategoryName, ProductLocation],
     );
     return rows;
   } catch (e) {
@@ -89,7 +81,9 @@ const addProduct = async (
 };
 
 const modifyProduct = async (
-    ProductId,
+    CategoryName,
+    CategoryId,
+    ProductOwner,
     Caption,
     owner,
     Gps,
@@ -98,12 +92,12 @@ const modifyProduct = async (
     next
 ) => {
   let sql =
-      "UPDATE wop_product SET ProductId = ?, Caption = ?, Gps = ? WHERE Price = ? AND owner = ?;";
-  let params = [ProductId, Caption, Gps, Price, owner];
+      "UPDATE Product SET CategoryName = ?, Caption = ?, Gps = ?, Price = ? WHERE ProductId = ? AND owner = ?;";
+  let params = [CategoryName, Caption, Gps, Price, owner];
   if (Role === 0) {
     sql =
-        "UPDATE wop_product SET ProductId = ?, Caption = ?, Gps = ?, ProductOwner = ? WHERE Price = ?;";
-    params = [ProductId, Caption, Gps, Price];
+        "UPDATE Product SET CategoryId = ?, Caption = ?, Gps = ?, ProductOwner = ? WHERE ProductId = ?;";
+    params = [CategoryId, Caption, Gps, Price];
   }
   console.log("sql", sql);
   try {
@@ -115,11 +109,11 @@ const modifyProduct = async (
   }
 };
 
-const deleteProduct = async (id, owner_id, Role, next) => {
-  let sql = "DELETE FROM Product WHERE ProductId = ? AND ProductOwner = ?";
-  let params = [id, owner_id];
+const deleteProduct = async (id, UserName, Role, next) => {
+  let sql = "DELETE FROM Product WHERE ImageLocation = ? AND UserName = ?";
+  let params = [id, UserName];
   if (Role === 0) {
-    sql = "DELETE FROM Product WHERE ProductId = ?";
+    sql = "DELETE FROM Product WHERE ImageLocation = ?";
     params = [id];
   }
   try {

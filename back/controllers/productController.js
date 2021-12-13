@@ -6,6 +6,7 @@ const {
   getProduct,
   addProduct,
   deleteProduct,
+    modifyProduct,
 } = require("../models/productModel");
 const { httpError } = require("../utils/errors");
 const { makeThumbnail } = require("../utils/resize");
@@ -99,19 +100,20 @@ const product_put = async (req, res, next) => {
   }
   // pvm VVVV-KK-PP esim 2010-05-28
   try {
-    const { Price, CategoryId, Caption } = req.body;
+    const { Price, CategoryId, Caption, ProductOwner } = req.body;
     /*let owner = req.user.user_id;
     if (req.user.role === 0) {
       owner = req.body.owner;
     }*/
 
-    const owner = req.user.role === 0 ? req.body.owner : req.user.user_id;
+    const owner = req.user.role === 0 ? req.body.ProductOwner : req.user.user_id;
 
     const result = await modifyProduct(
         Caption,
         CategoryId,
         owner,
         Price,
+        ProductOwner,
         req.params.id,
         req.user.role,
         next
@@ -132,16 +134,16 @@ const product_put = async (req, res, next) => {
 
 const product_delete = async (req, res, next) => {
   try {
-    const vastaus = await deleteProduct(
+    const answer = await deleteProduct(
         req.params.id,
         req.user.user_id,
         req.user.role,
         next
     );
-    if (vastaus.affectedRows > 0) {
+    if (answer.affectedRows > 0) {
       res.json({
         message: "product deleted",
-        product_id: vastaus.insertId,
+        product_id: answer.insertId,
       });
     } else {
       next(httpError("No product found", 404));
