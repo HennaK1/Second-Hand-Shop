@@ -31,7 +31,7 @@ const getUser = async (id, next) => {
 const addUser = async (name, email, username, password, next) => {
   try {
     const [rows] = await promisePool.execute(
-        "INSERT INTO User (FirstName, Email, UserName, Password,) VALUES (?, ?, ?, ?)",
+        "INSERT INTO User (FirstName, Email, UserName, Password) VALUES (?, ?, ?, ?)",
         [name, email, username, password]
     );
     return rows;
@@ -40,6 +40,7 @@ const addUser = async (name, email, username, password, next) => {
     next(httpError("Database error", 500));
   }
 };
+
 
 const getUserLogin = async (params) => {
   try {
