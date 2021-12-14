@@ -2,6 +2,7 @@
 // productRoute
 const express = require("express");
 const { body } = require("express-validator");
+const passport = require("../utils/pass");
 const multer = require("multer");
 const fileFilter = (req, file, cb) => {
   if (file.mimetype.includes("image")) {
@@ -16,19 +17,20 @@ const {
   product_get,
   product_post,
   product_put,
-  product_delete,
+  product_delete, category_get,
 } = require("../controllers/productController");
 const router = express.Router();
 
 router.route("/").get(product_list_get).post(
-    //passport.authenticate("jwt", { session: false }),
+    passport.authenticate("jwt", { session: false }),
     upload.single("product"),
     body("price").isNumeric().escape(),
     body("gps").notEmpty().escape(),
     body("caption").notEmpty().escape(),
-    body("category_name").notEmpty().escape(),
+    body("CategoryName").notEmpty().escape(),
     product_post
 );
+router.route("/category").get(category_get);
 
 router
 .route("/:id")
@@ -41,5 +43,6 @@ router
     body("price").isNumeric(),
     product_put
 );
+
 
 module.exports = router;

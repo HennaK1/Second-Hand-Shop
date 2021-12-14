@@ -37,7 +37,7 @@ const getProduct = async (id, next) => {
     const [rows] = await promisePool.execute(
         `
 	  SELECT *
-	  FROM image_location, 
+	  FROM Product 
 	  JOIN Category ON 
 	  Product.category_id = Category.category_id
 	  WHERE Category.category_id = ?`,
@@ -51,17 +51,18 @@ const getProduct = async (id, next) => {
 };
 
 const addProduct = async (
-    Product,
     Caption,
     user_id,
     category_id,
     image_location,
+    price,
+    gps,
     next
 ) => {
   try {
     const [rows] = await promisePool.execute(
-        "INSERT INTO Product (Caption, category_id, user_id, image_location,) VALUES (?, ?, ?, ?)",
-        [Caption, category_id, user_id, image_location],
+        "INSERT INTO Product (Caption, category_id, user_id, image_location, price, gps) VALUES (?, ?, ?, ?, ?, ?)",
+        [Caption, category_id, user_id, image_location, price, gps],
     );
     return rows;
   } catch (e) {
@@ -111,11 +112,11 @@ const deleteProduct = async (user_id, role, next) => {
     next(httpError("Database error", 500));
   }
 };
-const getCategories = async (category_name, category_id, next) => {
+const getCategories = async (category_id, next) => {
   try {
     const [rows] = await promisePool.execute(
-        "SELECT category_name FROM category_id where Category=?",
-        [category_name]
+        "SELECT * FROM Category where category_id=?",
+        [category_id]
     );
     return rows;
   } catch (e) {
@@ -123,7 +124,17 @@ const getCategories = async (category_name, category_id, next) => {
     next(httpError("Database error", 500));
   }
 };
-
+const getAllCategories = async ( next) => {
+  try {
+    const [rows] = await promisePool.execute(
+        "SELECT * FROM Category"
+    );
+    return rows;
+  } catch (e) {
+    console.error("getCategory error", e.message);
+    next(httpError("Database error", 500));
+  }
+};
 module.exports = {
   getAllProducts,
   getProductsByKeyword,
@@ -132,4 +143,5 @@ module.exports = {
   modifyProduct,
   deleteProduct,
   getCategories,
+  getAllCategories,
 };

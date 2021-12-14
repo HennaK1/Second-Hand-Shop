@@ -14,18 +14,8 @@ const url = 'http://localhost:3000'; // change url when uploading to server
 
 //];
 
-//const optionElement = document.querySelector(".add-category");
+const selectElement = document.querySelector("#categorylist");
 
-//optionElement.innerHTML = '';
-
-//const CategoryData = (categories) => {
-    //for (let i = 0; i < categories.length; i++) {
-       // optionElement.innerHTML +=
-
-       // `<option ${categories[i].CategoryName}</option>`;
-
-   // }
-//}
 
 
 
@@ -35,34 +25,34 @@ const addForm = document.querySelector('#addProductForm');
 
 
 // create category options to <select>
- /*const createCategoryOptions = (category) => {
+ const createOptions = (table, target) => {
 
-    categoryList.innerHTML = '';
-    categoryList.forEach((Category) => {
+    target.innerHTML = '';
+    table.forEach((item) => {
         // create options with DOM methods
         const option = document.createElement('option');
-        option.value = Category.CategoryName;
-        option.innerHTML = Category.CategoryName;
-        option.classList.add('border');
-        categoryList.appendChild(option);
+        option.value = item.category_id;
+        option.innerHTML = item.category_name;
+        target.appendChild(option);
     });
-    // load product data after categories
-    getProduct(product_get());
-};*/
+};
 // get categories to make options
 const getCategories = async () => {
     try {
         const options = {
             headers: {
-                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                Authorization: 'Bearer ' + sessionStorage.getItem ('token'),
             },
         };
-        const response = await fetch(url + '/category', options);
-        const categories = await response.json();
-        await getCategories(categories);
+        const response = await fetch (url + '/product/category', options);
+        const categories = await response.json ();
+        console.log(categories);
+        createOptions(categories, selectElement)
     } catch (e) {
-        console.log(e.message);
+        console.log (e.message);
     }
+}
+getCategories();
 
 // submit add product form
     addForm.addEventListener('submit', async (evt) => {
@@ -80,14 +70,4 @@ const getCategories = async () => {
         alert(json.message);
         location.href = '../front/front.html';
     });
-//AJAX CALLS
-    const getCategoryData = async () => {
-        try {
-            const response = await fetch(url + '/product');
-            const categories = await response.json();
-            await getCategoryData(categories);
-        } catch (e) {
-            console.log(e.message);
-        }
-    }
-};
+

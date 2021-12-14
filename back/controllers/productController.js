@@ -6,7 +6,7 @@ const {
   getProduct,
   addProduct,
   deleteProduct,
-  modifyProduct,
+  modifyProduct, getAllCategories,
 } = require("../models/productModel");
 const { httpError } = require("../utils/errors");
 const { makeThumbnail } = require("../utils/resize");
@@ -57,19 +57,18 @@ const product_post = async (req, res, next) => {
   try {
     const thumb = await makeThumbnail(
         req.file.path,
-        "./uploads/thumbnails" + req.file.product_id
+        "./uploads/thumbnails" + req.file.filename
     );
 
-    const {price, gps, caption, category_name, image_location } = req.body;
+    const {price, gps, caption, CategoryName } = req.body;
 
     const result = await addProduct(
+        caption,
+        req.user.user_id,
+        CategoryName,
+        req.file.filename,
         price,
         gps,
-        caption,
-        category_name,
-        image_location,
-        req.user.user_id,
-        req.file.product_id,
         next
     );
     if (thumb) {
@@ -149,11 +148,25 @@ const product_delete = async (req, res, next) => {
     next(httpError("internal server error", 500));
   }
 };
+const category_get = async(req, res, next)=>{
+  try {
+    const categories = await getAllCategories(next);
+    if (categories.length > 0) {
+      res.json(categories);
+    } else {
+      next("No categories found", 404);
+    }
+  } catch (e) {
+    console.log("category_get error", e.message);
+    next(httpError("internal server error", 500));
+  }
+};
 
 module.exports = {
   product_list_get,
   product_get,
   product_post,
   product_delete,
-  product_put
+  product_put,
+  category_get,
 };
