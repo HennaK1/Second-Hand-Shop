@@ -1,7 +1,7 @@
 'use strict';
 const url = 'http://localhost:3000'; // change url when uploading to server
 
-//onst Categories = [
+//const Categories = [
 //    {
 //       title: 'Paidat',
 //  },
@@ -18,12 +18,15 @@ const url = 'http://localhost:3000'; // change url when uploading to server
 
 //optionElement.innerHTML = '';
 
-//for (let i= 0; i < Category.length; i++){
-    //optionElement.innerHTML +=
-        //`<option>
-        //${Category[i].CategoryName}
-        //</option>`;
+//const CategoryData = (categories) => {
+    //for (let i = 0; i < categories.length; i++) {
+       // optionElement.innerHTML +=
+
+       // `<option ${categories[i].CategoryName}</option>`;
+
+   // }
 //}
+
 
 
 // select existing html elements
