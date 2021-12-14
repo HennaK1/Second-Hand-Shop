@@ -57,7 +57,7 @@ const product_post = async (req, res, next) => {
   try {
     const thumb = await makeThumbnail(
         req.file.path,
-        "./uploads/thumbnails" + req.file.filename
+        "../thumbnails" + req.file.filename
     );
 
     const {price, gps, caption, CategoryName } = req.body;

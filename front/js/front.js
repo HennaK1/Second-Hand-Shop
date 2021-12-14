@@ -35,7 +35,7 @@ const createProductCards = (products) => {
         p3.innerHTML = `Caption: ${product.caption}`;
 
         const li = document.createElement('li');
-        li.classList.add('light-border');
+        li.classList.add('card-border');
 
         li.appendChild(figure);
         li.appendChild(p1);
