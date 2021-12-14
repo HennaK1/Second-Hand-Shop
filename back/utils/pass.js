@@ -9,15 +9,15 @@ const { getUserLogin } = require("../models/userModel");
 
 // local strategy for username password login
 passport.use(
-    new Strategy(async (username, password, done) => {
-      const params = [username];
+    new Strategy(async (user_id, password, done) => {
+      const params = [user_id];
       try {
         const [user] = await getUserLogin(params);
         console.log("Local strategy", user); // result is binary row
         if (!user) {
           return done(null, false);
         }
-        if (!bcrypt.compareSync(password, user.Password)) {
+        if (!bcrypt.compareSync(password, user.password)) {
           return done(null, false);
         }
         return done(null, { ...user }, { message: "Logged In Successfully" }); // use spread syntax to create shallow copy to get rid of binary row type

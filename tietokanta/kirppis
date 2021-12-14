@@ -13,14 +13,14 @@ CREATE TABLE User
 
 CREATE TABLE Chat
 (
-    ChatId INT NOT NULL,
+    ChatId INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (ChatId)
 );
 
 CREATE TABLE Category
 (
+    CategoryId INT NOT NULL AUTO_INCREMENT,
     CategoryName VARCHAR(60) NOT NULL,
-    CategoryId INT NOT NULL,
     PRIMARY KEY (CategoryId)
 );
 
@@ -28,14 +28,14 @@ CREATE TABLE ChatMessage
 (
     MessageText VARCHAR(60) NOT NULL,
     MessageOrder INT NOT NULL,
-    ChatId INT NOT NULL,
+    ChatId INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (MessageOrder, ChatId),
     FOREIGN KEY (ChatId) REFERENCES Chat(ChatId)
 );
 
 CREATE TABLE UserChat
 (
-    ChatId INT NOT NULL,
+    ChatId INT NOT NULL AUTO_INCREMENT,
     UserName VARCHAR(60) NOT NULL,
     PRIMARY KEY (ChatId, UserName),
     FOREIGN KEY (ChatId) REFERENCES Chat(ChatId),
@@ -44,12 +44,12 @@ CREATE TABLE UserChat
 
 CREATE TABLE Product
 (
-    ProductId INT NOT NULL,
-    Gps INT NOT NULL,
+    ProductId INT NOT NULL AUTO_INCREMENT,
+    gps VARCHAR(60) NOT NULL,
     Price INT NOT NULL,
     Caption VARCHAR(60) NOT NULL,
     LikeCount INT NOT NULL,
-    ImageLocation INT NOT NULL,
+    image_location VARCHAR(128) NOT NULL,
     UserName VARCHAR(60) NOT NULL,
     CategoryId INT NOT NULL,
     ProductOwner VARCHAR(60) NOT NULL,
@@ -60,8 +60,8 @@ CREATE TABLE Product
 
 CREATE TABLE Comment
 (
+    CommentId INT NOT NULL AUTO_INCREMENT,
     CommentText VARCHAR(60) NOT NULL,
-    CommentId INT NOT NULL,
     UserName VARCHAR(60) NOT NULL,
     ProductId INT NOT NULL,
     PRIMARY KEY (CommentId),

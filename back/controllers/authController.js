@@ -36,10 +36,10 @@ const user_post = async (req, res, next) => {
 
   try {
     console.log('from form', req.body);
-    const { name, email, username, password } = req.body;
+    const { name, email, user_id, password } = req.body;
     // hash password
     const hash = bcrypt.hashSync(password, salt);
-    const result = await addUser(name, email, username, hash, next);
+    const result = await addUser(name, email, user_id, hash, next);
     if (result.affectedRows > 0) {
       res.json({
         message: 'user added',

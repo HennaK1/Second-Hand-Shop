@@ -28,11 +28,11 @@ const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
 const addForm = document.querySelector('#addProductForm');
-const categoryList = document.querySelector('.add-category');
+//const categoryList = document.querySelector('.add-category');
 
 
 // create category options to <select>
-const createCategoryOptions = (categories) => {
+ /*const createCategoryOptions = (category) => {
 
     categoryList.innerHTML = '';
     categoryList.forEach((Category) => {
@@ -44,8 +44,8 @@ const createCategoryOptions = (categories) => {
         categoryList.appendChild(option);
     });
     // load product data after categories
-    getProduct(ProductId);
-};
+    getProduct(product_get());
+};*/
 // get categories to make options
 const getCategories = async () => {
     try {
@@ -56,37 +56,35 @@ const getCategories = async () => {
         };
         const response = await fetch(url + '/category', options);
         const categories = await response.json();
-        createCategoryOptions(categories);
+        await getCategories(categories);
     } catch (e) {
         console.log(e.message);
     }
-};
-getCategories();
 
 // submit add product form
-addForm.addEventListener('submit', async (evt) => {
-    evt.preventDefault();
-    const fd = new FormData(addForm);
-    const fetchOptions = {
-        method: 'POST',
-        headers: {
-            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-        },
-        body: fd,
-    };
-    const response = await fetch(url + '/product', fetchOptions);
-    const json = await response.json();
-    alert(json.message);
-    location.href = '../front/front.html';
-});
+    addForm.addEventListener('submit', async (evt) => {
+        evt.preventDefault();
+        const fd = new FormData(addForm);
+        const fetchOptions = {
+            method: 'POST',
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            },
+            body: fd,
+        };
+        const response = await fetch(url + '/product', fetchOptions);
+        const json = await response.json();
+        alert(json.message);
+        location.href = '../front/front.html';
+    });
 //AJAX CALLS
-const getGategoryData = async () => {
-    try {
-        const response = await fetch(url + '/product');
-        const categories = await response.json();
-        getGategoryData(categories);
-    } catch (e) {
-        console.log(e.message);
+    const getCategoryData = async () => {
+        try {
+            const response = await fetch(url + '/product');
+            const categories = await response.json();
+            await getCategoryData(categories);
+        } catch (e) {
+            console.log(e.message);
+        }
     }
 };
-

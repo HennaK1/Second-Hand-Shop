@@ -57,26 +57,26 @@ const product_post = async (req, res, next) => {
   try {
     const thumb = await makeThumbnail(
         req.file.path,
-        "./uploads/thumbnails" + req.file.ProductId
+        "./uploads/thumbnails" + req.file.product_id
     );
 
-    const {Price, Gps, Caption, CategoryName, ImageLocation } = req.body;
+    const {price, gps, caption, category_name, image_location } = req.body;
 
     const result = await addProduct(
-        Price,
-        Gps,
-        Caption,
-        CategoryName,
-        ImageLocation,
-        req.user.UserName,
-        req.file.ProductId,
+        price,
+        gps,
+        caption,
+        category_name,
+        image_location,
+        req.user.user_id,
+        req.file.product_id,
         next
     );
     if (thumb) {
       if (result.affectedRows > 0) {
         res.json({
           message: "product added",
-          ProductId: result.insertId,
+          product_id: result.insertId,
         });
       } else {
         next(httpError("No product inserted", 400));
@@ -98,19 +98,19 @@ const product_put = async (req, res, next) => {
   }
   // pvm VVVV-KK-PP esim 2010-05-28
   try {
-    const { Caption, } = req.body;
+    const { caption, } = req.body;
     /*let owner = req.user.user_id;
     if (req.user.Role === 0) {
       owner = req.body.owner;
     }*/
 
-    const ProductOwner = req.user.Role === 0 ? req.body.owner : req.user.UserName;
+    const ProductOwner = req.user.role === 0 ? req.body.owner : req.user.user_id;
 
     const result = await modifyProduct(
-        Caption,
-        ProductOwner,
-        req.params.Imagelocation,
-        req.user.Role,
+        caption,
+        owner,
+        req.params.image_location,
+        req.user.role,
         next
     );
     if (result.affectedRows > 0) {
@@ -132,8 +132,8 @@ const product_delete = async (req, res, next) => {
   try {
     const answer = await deleteProduct(
         req.params.id,
-        req.user.UserName,
-        req.user.Role,
+        req.user.user_id,
+        req.user.role,
         next
     );
     if (answer.affectedRows > 0) {

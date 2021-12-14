@@ -8,8 +8,8 @@ const getAllProducts = async (next) => {
     // TODO: do the LEFT (or INNER) JOIN to get owner's name as ownername (from wop_user table).
     const [rows] = await promisePool.execute(`
         SELECT * FROM Product 
-        JOIN Category ON CategoryName.CategoryId 
-        JOIN User ON ImageLocation.UserName = User.UserName;`
+        JOIN Category ON Category.category_id  =  Product.category_id                        
+        JOIN User ON User.user_id = Product.user_id;`
     );
     return rows;
   } catch (e) {
@@ -37,10 +37,10 @@ const getProduct = async (id, next) => {
     const [rows] = await promisePool.execute(
         `
 	  SELECT *
-	  FROM ImageLocation, 
+	  FROM image_location, 
 	  JOIN Category ON 
-	  ImageLocation.CategoryId = Category.CategoryId
-	  WHERE ImageLocation.CategoryId = ?`,
+	  Product.category_id = Category.category_id
+	  WHERE Category.category_id = ?`,
         [id]
     );
     return rows;
@@ -53,15 +53,15 @@ const getProduct = async (id, next) => {
 const addProduct = async (
     Product,
     Caption,
-    UserName,
-    CategoryId,
-    ImageLocation,
+    user_id,
+    category_id,
+    image_location,
     next
 ) => {
   try {
     const [rows] = await promisePool.execute(
-        "INSERT INTO Product (Caption, CategoryId, UserName, ImageLocation,) VALUES (?, ?, ?, ?)",
-        [Caption, CategoryId, UserName, ImageLocation],
+        "INSERT INTO Product (Caption, category_id, user_id, image_location,) VALUES (?, ?, ?, ?)",
+        [Caption, category_id, user_id, image_location],
     );
     return rows;
   } catch (e) {
@@ -71,20 +71,20 @@ const addProduct = async (
 };
 
 const modifyProduct = async (
-    ProductOwner,
-    Caption,
-    Gps,
-    Price,
-    Role,
+    owner,
+    caption,
+    gps,
+    price,
+    role,
     next
 ) => {
   let sql =
-      "UPDATE Product SET Caption = ?, Gps = ?, Price = ? WHERE ProductId = ? AND ProductOwner = ?;";
-  let params = [ Caption, Gps, Price, ProductOwner];
-  if (Role === 0) {
+      "UPDATE Product SET caption = ?, gps = ?, price = ? WHERE Product = ? AND owner = ?;";
+  let params = [ caption, gps, price, owner, role];
+  if (role === 0) {
     sql =
-        "UPDATE Product SET Caption = ?, Gps = ?, ProductOwner = ? WHERE ProductId = ?;";
-    params = [Caption, Gps, Price];
+        "UPDATE Product SET caption = ?, gps = ?, price = ? WHERE Product = ?;";
+    params = [caption, gps, price];
   }
   console.log("sql", sql);
   try {
@@ -96,12 +96,12 @@ const modifyProduct = async (
   }
 };
 
-const deleteProduct = async (id, UserName, Role, next) => {
-  let sql = "DELETE FROM Product WHERE ImageLocation = ? AND UserName = ?;";
-  let params = [id, UserName];
-  if (Role === 0) {
-    sql = "DELETE FROM Product WHERE ImageLocation = ?";
-    params = [id];
+const deleteProduct = async (user_id, role, next) => {
+  let sql = "DELETE FROM Product WHERE image_location = ? AND user_id = ?;";
+  let params = [user_id];
+  if (role === 0) {
+    sql = "DELETE FROM Product WHERE image_location = ?";
+    params = [user_id];
   }
   try {
     const [rows] = await promisePool.execute(sql, params);
@@ -111,11 +111,11 @@ const deleteProduct = async (id, UserName, Role, next) => {
     next(httpError("Database error", 500));
   }
 };
-const getCategories = async (CategoryName, next) => {
+const getCategories = async (category_name, category_id, next) => {
   try {
     const [rows] = await promisePool.execute(
-        "SELECT CategoryName FROM Category where CategoryId=?",
-        [CategoryName]
+        "SELECT category_name FROM category_id where Category=?",
+        [category_name]
     );
     return rows;
   } catch (e) {
@@ -131,4 +131,5 @@ module.exports = {
   addProduct,
   modifyProduct,
   deleteProduct,
+  getCategories,
 };

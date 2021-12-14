@@ -26,13 +26,13 @@ const createProductCards = (products) => {
         const figure = document.createElement('figure').appendChild(img);
 
         const p1 = document.createElement('p');
-        p1.innerHTML = `Price: ${product.Price}`;
+        p1.innerHTML = `Price: ${product.price}`;
 
         const p2 = document.createElement('p');
-        p2.innerHTML = `Location: ${product.Gps}`;
+        p2.innerHTML = `Location: ${product.gps}`;
 
         const p3 = document.createElement('p');
-        p3.innerHTML = `Caption: ${product.Caption}`;
+        p3.innerHTML = `Caption: ${product.caption}`;
 
         const li = document.createElement('li');
         li.classList.add('light-border');
