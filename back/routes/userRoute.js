@@ -1,7 +1,9 @@
 'use strict';
 // userRoute
 const express = require('express');
+const multer = require("multer");
 const { body } = require('express-validator');
+const upload = multer({ dest: './uploads/'});
 const {
   user_list_get,
   user_get,

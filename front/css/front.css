@@ -79,8 +79,10 @@ ul {
 }
 
 li {
-    width: 30%;
+
     margin: 0.5em;
+    background-color: white;
+    text-align: center;
 }
 .card-border {
     border-radius: 8px;
@@ -88,6 +90,36 @@ li {
     padding: 1em;
     box-sizing: border-box;
 }
+.modalobject {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.7);
+    position: fixed;
+}
+.hide {
+    display: none !important;
+}
+.closemodal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 1em;
+    right: 1em;
+    color: #FFFBFA;
+    text-shadow: #222222;
+    font-size: 1.3em;
+}
+
+.modalobject img {
+    display: block;
+    height: 80vh;
+    margin: auto;
+    padding-top: 10vh;
+}
+
 
 
 

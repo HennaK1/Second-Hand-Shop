@@ -17,7 +17,8 @@ const {
   product_get,
   product_post,
   product_put,
-  product_delete, category_get,
+  product_delete,
+  category_get,
 } = require("../controllers/productController");
 const router = express.Router();
 
