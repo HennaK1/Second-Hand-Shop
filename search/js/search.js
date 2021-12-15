@@ -4,6 +4,8 @@ const url = 'http://localhost:3000';
 
 const selectElement = document.querySelector("#categorylist");
 
+
+
 // create category options to <select>
 const createOptions = (table, target) => {
 
@@ -16,6 +18,8 @@ const createOptions = (table, target) => {
         target.appendChild(option);
     });
 };
+
+
 // get categories to make options
 const getCategories = async () => {
     try {
