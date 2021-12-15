@@ -27,6 +27,15 @@ h1{
     text-align: center;
     font-size: 35px;
 }
+#categorylist {
+    background-color: #a6a8b9;
+    padding: 11px;
+}
+.btnstyle {
+    background-color: #a6a8b9;
+    padding: 11px;
+    border: none;
+}
 
 .topnav {
     position: fixed;
@@ -117,6 +126,23 @@ li {
     height: 80vh;
     margin: auto;
     padding-top: 10vh;
+}
+@media screen and (max-width: 1040px) {
+    .headerfront {
+        width: 102vh;
+    }
+    ul {
+        display: table;
+        margin: 0 auto;
+        text-align: left;
+        padding: 0;
+    }
+    .card-border {
+        width: 100vh;
+    }
+    .container {
+        width: 100vh;
+    }
 }
 
 

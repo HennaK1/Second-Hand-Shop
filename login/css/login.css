@@ -74,33 +74,29 @@
         text-align: center;
         float: none;
     }
-
-    @media screen and (max-width: 700px) {
-        .sidebar {
-            width: 100%;
-            height: auto;
-            position: relative;
-            text-align: center;
-            float: none;
-        }
-        .sidebar a {float: left;}
-        div.content {margin-left: 0;}
-    }
-
-    @media screen and (max-width: 400px) {
-        .sidebar a {
-            text-align: center;
-            float: none;
-        }
-    }
-
     .flex-container{
         display: flex;
         flex-direction: column;
         justify-content: center;
         alignment: center;
-        width: 100%;
+        margin-top: 50px;
     }
+
+    @media screen and (max-width: 700px) {
+        .sidebar {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            float: none;
+        }
+        .sidebar a {float: left;}
+        div.content {margin-left: 0;}
+        .flex-container {
+            padding: 50px;
+            display: flex;
+        }
+    }
+
 
 
     form {

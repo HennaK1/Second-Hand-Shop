@@ -18,11 +18,8 @@
 
 
 
-<form id="settings-modify">
-    <input class="button-settings" type="text" name="firstname" placeholder="Change your name">
-    <div class="tooltip">
-    <input class="button-settings" type="file" name="profilepicture" accept="image/*">
-    <span class="tooltiptext">Change your profile picture</span></div>
+<form id="modUserForm">
+    <input class="button-settings" type="text" name="user_id" placeholder="Change your name">
     <input class="button-settings" type="text" name="email" placeholder="Change your email">
     <input class="button-settings" type="text" name="password" placeholder="Change your password">
     <button class="button-settings" type="submit">Save changes</button>
@@ -35,11 +32,9 @@
     <a href="../login/logout.html">Logout</a>
 </div>
 
+
 <script src="../front/js/check-login.js"></script>
 <script src="../front/js/serialize.js"></script>
-<script src="../settings/js/settings.js"></script>
-
-
-
+<script src="/settings/js/settings.js"></script>
 </body>
 </html>
