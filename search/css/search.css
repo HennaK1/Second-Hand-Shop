@@ -63,11 +63,12 @@ body {
 }
 .select {
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     position:relative;
     width:250px;
     height:40px;
     margin: 10px;
+    background-color: #747474;
 }
 
 .option {

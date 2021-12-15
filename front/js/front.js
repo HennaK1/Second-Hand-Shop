@@ -42,9 +42,6 @@ const createProductCards = (products) => {
         const p3 = document.createElement('p');
         p3.innerHTML = `Caption: ${product.caption}`;
 
-        const p4 = document.createElement('p');
-        p4.innerHTML = `Category: ${product.category_id}`;
-
         const li = document.createElement('li');
         li.classList.add('card-border');
 
@@ -53,7 +50,6 @@ const createProductCards = (products) => {
         li.appendChild(p1);
         li.appendChild(p2);
         li.appendChild(p3);
-        li.appendChild(p4);
         ul.appendChild(li);
 
     });

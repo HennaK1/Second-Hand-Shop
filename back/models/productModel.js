@@ -37,7 +37,7 @@ const getProduct = async (id, next) => {
     const [rows] = await promisePool.execute(
         `
 	  SELECT *
-	  FROM Product 
+	  FROM Product
 	  JOIN Category ON 
 	  Product.category_id = Category.category_id
 	  WHERE Category.category_id = ?`,
