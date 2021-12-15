@@ -18,7 +18,7 @@ const {
   product_post,
   product_put,
   product_delete,
-  category_get,
+  category_get, product_category_get,
 } = require("../controllers/productController");
 const router = express.Router();
 
@@ -32,6 +32,8 @@ router.route("/").get(product_list_get).post(
     product_post
 );
 router.route("/category").get(category_get);
+
+router.route('/search/:cat_id').get(product_category_get);
 
 router
 .route("/:id")

@@ -41,6 +41,18 @@ const addUser = async (firstname, email, user_id, password, next) => {
   }
 };
 
+const modifyUser = async (user) => {
+  try {
+    const [rows] = await promisePool.execute
+    ('UPDATE User SET firstname = ?, email = ?, password = ?, role = ? WHERE user_id = ?',
+        [user.firstname, user.email, user.password, user.role, user.id]);
+    return rows.affectedRows === 1;
+  } catch (e) {
+    console.error('model update user error', e.message);
+  }
+}
+
+
 
 const getUserLogin = async (params) => {
   try {
@@ -61,4 +73,5 @@ module.exports = {
   getUser,
   addUser,
   getUserLogin,
+  modifyUser,
 };

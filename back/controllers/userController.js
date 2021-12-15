@@ -1,6 +1,6 @@
 'use strict';
 const { validationResult } = require('express-validator');
-const { getAllUsers, getUser, addUser } = require('../models/userModel');
+const { getAllUsers, getUser, addUser, modifyUser} = require('../models/userModel');
 const { httpError } = require('../utils/errors');
 
 const user_list_get = async (req, res, next) => {
@@ -31,6 +31,12 @@ const user_get = async (req, res, next) => {
   }
 };
 
+const user_modify = async (req, res) => {
+  const updated = await modifyUser(req.body);
+  res.json({message: `User updated ${updated}`});
+    }
+
+
 const checkToken = (req, res, next) => {
   if (!req.user) {
     next(new Error('token not valid'));
@@ -43,5 +49,6 @@ const checkToken = (req, res, next) => {
 module.exports = {
   user_list_get,
   user_get,
+  user_modify,
   checkToken,
 };

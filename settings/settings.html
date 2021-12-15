@@ -18,8 +18,11 @@
 
 
 
-<form id="modUserForm">
-    <input class="button-settings" type="text" name="name" placeholder="Change your name">
+<form id="settings-modify">
+    <input class="button-settings" type="text" name="firstname" placeholder="Change your name">
+    <div class="tooltip">
+    <input class="button-settings" type="file" name="profilepicture" accept="image/*">
+    <span class="tooltiptext">Change your profile picture</span></div>
     <input class="button-settings" type="text" name="email" placeholder="Change your email">
     <input class="button-settings" type="text" name="password" placeholder="Change your password">
     <button class="button-settings" type="submit">Save changes</button>
@@ -27,16 +30,16 @@
 
 <div class="topnav">
     <a href="../front/front.html">Home</a>
-    <a href="../search/search.html">Search</a>
-    <a href="../profile/profile.html">Profile</a>
     <a href="../upload/post-img.html">Add Product</a>
     <a href="../settings/settings.html">Settings</a>
     <a href="../login/logout.html">Logout</a>
 </div>
 
-
 <script src="../front/js/check-login.js"></script>
 <script src="../front/js/serialize.js"></script>
-<script src="/settings/js/settings.js"></script>
+<script src="../settings/js/settings.js"></script>
+
+
+
 </body>
 </html>

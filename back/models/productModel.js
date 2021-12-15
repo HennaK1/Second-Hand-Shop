@@ -18,6 +18,23 @@ const getAllProducts = async (next) => {
   }
 };
 
+
+const getProductCategory = async (next, category_id) => {
+  try {
+    // TODO: do the LEFT (or INNER) JOIN to get owner's name as ownername (from wop_user table).
+    const [rows] = await promisePool.execute(`
+        SELECT * FROM Product 
+        JOIN Category ON Category.category_id  =  Product.category_id                        
+        JOIN User ON User.user_id = Product.user_id WHERE Category.category_id = ?;`, [category_id]
+    );
+    return rows;
+  } catch (e) {
+    console.error("getAllProducts error", e.message);
+    next(httpError("Database error", 500));
+  }
+};
+
+
 const getProductsByKeyword = async (next) => {
   try {
     // TODO: do the LEFT (or INNER) JOIN to get owner's name as ownername (from wop_user table).
@@ -158,4 +175,5 @@ module.exports = {
   getCategories,
   getAllCategories,
   getCategory,
+  getProductCategory,
 };

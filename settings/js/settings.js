@@ -26,8 +26,9 @@ modUserForm.addEventListener('submit', async (evt) => {
     const response = await fetch(url + '/user', fetchOptions);
     const json = await response.json();
     console.log = (data);
-    if (json.error) {
-        alert(json.error.message);
+    console.log('modify_response', json);
+    if (!json.user) {
+        alert(json.message);
     } else {
         alert(json.message);
     }

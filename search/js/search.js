@@ -1,6 +1,6 @@
 'use strict';
 
-const url = 'http://localhost:3000';
+//const url = 'http://localhost:3000';
 
 const selectElement = document.querySelector("#categorylist");
 
@@ -36,4 +36,20 @@ const getCategories = async () => {
     }
 }
 getCategories();
+
+selectElement.addEventListener('change', async ()=> {
+    try {
+        const options = {
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem ('token'),
+            },
+        };
+        const response = await fetch (url + '/product/search/' + selectElement.value, options);
+        const categories = await response.json ();
+        console.log(categories);
+        createProductCards(categories)
+    } catch (e) {
+        console.log (e.message);
+    }
+})
 
