@@ -10,6 +10,7 @@ const close = document.querySelector('#product-modal a');
 // get user data for admin check
 const user = JSON.parse(sessionStorage.getItem('user'));
 
+
 // create product cards
 const createProductCards = (products) => {
     // clear ul
@@ -51,8 +52,8 @@ const createProductCards = (products) => {
         li.appendChild(p2);
         li.appendChild(p3);
         ul.appendChild(li);
-
     });
+
     // close modal
     close.addEventListener('click', (evt) => {
         evt.preventDefault();
@@ -60,8 +61,6 @@ const createProductCards = (products) => {
     });
 };
 
-
-// AJAX call
 const getProduct = async () => {
     try {
         const fetchOptions = {
