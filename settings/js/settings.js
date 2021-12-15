@@ -2,7 +2,7 @@
 const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
-const modUserForm = document.querySelector('#settings-modify');
+const modUserForm = document.querySelector('#modUserForm');
 
 // submit add user form
 modUserForm.addEventListener('submit', async (evt) => {
@@ -25,10 +25,11 @@ modUserForm.addEventListener('submit', async (evt) => {
 
     const response = await fetch(url + '/user', fetchOptions);
     const json = await response.json();
+    console.log = (data);
     if (json.error) {
         alert(json.error.message);
     } else {
         alert(json.message);
     }
     location.href = '../front/front.html';
-})
+});
