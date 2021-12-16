@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="dataSourceStorageLocal" created-in="WS-212.5457.55">
-    <data-source name="kirppis" uuid="76be2364-1c53-48e7-b2d6-d756ca5ed225">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MARIADB" exact-version="0" />
-      <schema-mapping />
-    </data-source>
-  </component>
-</project>
