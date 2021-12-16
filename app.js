@@ -13,9 +13,9 @@ app.use(cors());
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 if (process.env.NODE_ENV === 'production') {
-  require('./utils/production')(app, process.env.PORT, process.env.HTTPS_PORT);
+  require('./back/utils/production')(app, process.env.PORT, process.env.HTTPS_PORT);
 } else {
-  require('./utils/localhost')(app, process.env.PORT);
+  require('./back/utils/localhost')(app, process.env.PORT);
 }
 
 app.use(express.json()); // for parsing application/json
