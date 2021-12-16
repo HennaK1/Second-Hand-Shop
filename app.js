@@ -9,8 +9,14 @@ const passport = require("./back/utils/pass");
 const { httpError } = require("./back/utils/errors");
 
 const app = express();
-const port = 3000;
 app.use(cors());
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+if (process.env.NODE_ENV === 'production') {
+  require('./utils/production')(app, process.env.PORT, process.env.HTTPS_PORT);
+} else {
+  require('./utils/localhost')(app, process.env.PORT);
+}
 
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
