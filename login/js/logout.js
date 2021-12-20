@@ -1,5 +1,5 @@
 'use strict';
-const url = 'https://10.114.34.14/app'; // change url when uploading to server
+const url = 'https://10.114.34.14/app/'; // change url when uploading to server
 
 (async () => {
     try {
