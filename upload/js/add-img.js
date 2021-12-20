@@ -68,6 +68,5 @@ getCategories();
         const response = await fetch(url + '/product', fetchOptions);
         const json = await response.json();
         alert(json.message);
-        location.href = '../front/front.html';
     });
 
