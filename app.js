@@ -42,5 +42,3 @@ app.use((err, req, res, next) => {
     message: err.message || "internal server error",
   });
 });
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
